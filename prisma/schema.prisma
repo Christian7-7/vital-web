@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id               String   @id @default(uuid())
+  created_at       DateTime @default(now())
+  name             String
+  description      String
+  price            Float
+  image_url        String
+  category         String
+  brand            String?
+  stock            Int      @default(0)
+  sport_category   String?
+  is_featured      Boolean  @default(false) @map("featured")
+  benefits         String[]
+  image_gallery    String[]
+  
+  @@map("products")
+}
